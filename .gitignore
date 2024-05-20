@@ -1,0 +1,36 @@
+# .gitignore
+
+*.drawio
+*.png
+*.jpg
+
+
+# Ignorar configuraciones locales
+*.ini
+
+# Ignorar la carpeta de entorno virtual
+venv/
+env/
+
+# Ignorar archivos .pyc y __pycache__
+*.pyc
+__pycache__/
+
+# Ignorar archivos de la base de datos SQLite si los usas
+*.db
+*.sqlite3
+
+
+# Ignorar archivos de registro
+*.log
+*.bkp
+
+# Ignorar archivos de configuración del sistema
+.DS_Store
+
+# Ignorar archivos de paquetes de Python
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
