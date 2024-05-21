@@ -2,6 +2,7 @@ import customtkinter as ctk
 from PIL import Image
 
 ICON_PATH = "./assets/images/images_icon.png"
+FONT = "Rubik"
 
 
 class MainView(ctk.CTkFrame):
@@ -29,7 +30,14 @@ class MainView(ctk.CTkFrame):
             text="",
         )
 
-        self.selectImgBtn = ctk.CTkButton(self, text="Select here")
+        self.selectImgBtn = ctk.CTkButton(
+            self,
+            text="Select here",
+            width=240,
+            height=50,
+            font=(FONT, 18),
+            command=self.controller.selectImgs,
+        )
 
         self.labelWelcome.pack()
         self.labelMainIcon.pack()

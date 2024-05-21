@@ -6,7 +6,8 @@ from controllers.mainController import MainController
 def main():
     root = ctk.CTk(fg_color="#333333")
     root.title("Wautomarker")
-    root.geometry("800x400")
+    root.geometry("700x400")
+    root.resizable(False, False)
 
     app = MainController(root)
 
