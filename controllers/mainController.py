@@ -1,5 +1,6 @@
 from tkinter import filedialog
 
+from controllers.editorController import EditorController
 from models.mainModel import MainModel
 from views.mainView import MainView
 from views.watermarkView import WatermarkView
@@ -23,3 +24,5 @@ class MainController:
     def selectWatermark(self):
         self.model.save_watermark(filedialog.askopenfilename())
         print(self.model.watermark)
+        self.watermarkView.pack_forget()
+        EditorController(self.root, self.model)

@@ -1,5 +1,6 @@
 import customtkinter as ctk
 
+from controllers.editorController import EditorController
 from controllers.mainController import MainController
 
 
