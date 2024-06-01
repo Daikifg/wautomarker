@@ -12,30 +12,29 @@ class LeftSideEditorView(ctk.CTkScrollableFrame):
         self._fg_color = "#FF0000"
         self._set_appearance_mode("system")
 
-        self.imgs = [Image.open(img) for img in self.controller.model.imgs]
-
         self.imgsList = [
             ctk.CTkImage(
-                img,
+                img.img,
                 size=(
                     resizeToSquareImg(
-                        calcAspectRatioImg(img.size), MINIATURE_IMG_CONTAINER_SIZE
+                        calcAspectRatioImg(img.img.size),
+                        MINIATURE_IMG_CONTAINER_SIZE,
                     )
                 ),
             )
-            for img in self.imgs
+            for img in self.controller.model.imgsAndWatermark
         ]
 
         self.imgsListButtons = []
 
-        for x in range(0, len(self.imgs)):
+        for x in range(0, len(self.imgsList)):
             btn = ctk.CTkButton(
                 master=self,
                 image=self.imgsList[x],
                 text="",
                 fg_color="#333333",
                 command=lambda x=x: self.controller.displaySelectedImg(
-                    self.imgs[x].filename
+                    self.controller.model.imgsAndWatermark[x]
                 ),
             )
 

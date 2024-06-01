@@ -1,7 +1,7 @@
 from tkinter import filedialog
 
 from controllers.editorController import EditorController
-from models.mainModel import MainModel
+from models.models import MainModel
 from views.mainView import MainView
 from views.watermarkView import WatermarkView
 
@@ -17,12 +17,11 @@ class MainController:
     def selectImgs(self):
         imgs_paths = filedialog.askopenfilenames()
         for img in imgs_paths:
-            self.model.save_imgs(img)
+            self.model.set_imgs(img)
         self.mainView.pack_forget()
         self.watermarkView.pack(expand=True)
 
     def selectWatermark(self):
-        self.model.save_watermark(filedialog.askopenfilename())
-        print(self.model.watermark)
+        self.model.set_watermark(filedialog.askopenfilename())
         self.watermarkView.pack_forget()
         EditorController(self.root, self.model)
