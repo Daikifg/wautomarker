@@ -1,5 +1,4 @@
 import customtkinter as ctk
-from PIL import Image
 
 from utils.config import MINIATURE_IMG_CONTAINER_SIZE
 from utils.helpers import calcAspectRatioImg, resizeToSquareImg
@@ -9,8 +8,6 @@ class LeftSideEditorView(ctk.CTkScrollableFrame):
     def __init__(self, master, controller, **kwargs):
         super().__init__(master, **kwargs)
         self.controller = controller
-        self._fg_color = "#FF0000"
-        self._set_appearance_mode("system")
 
         self.imgsList = [
             ctk.CTkImage(

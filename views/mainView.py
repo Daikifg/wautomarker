@@ -1,8 +1,9 @@
 import customtkinter as ctk
 from PIL import Image
 
+from utils.config import FONT_FAMILY
+
 ICON_PATH = "./assets/images/images_icon.png"
-FONT = "Rubik"
 
 
 class MainView(ctk.CTkFrame):
@@ -21,7 +22,7 @@ class MainView(ctk.CTkFrame):
         self.labelWelcome = ctk.CTkLabel(
             self,
             text="Welcome to the Wautomarker",
-            font=("Rubik bold", 26),
+            font=(f"{FONT_FAMILY} bold", 26),
         )
 
         self.labelMainIcon = ctk.CTkLabel(
@@ -35,7 +36,7 @@ class MainView(ctk.CTkFrame):
             text="Select here",
             width=240,
             height=50,
-            font=(FONT, 18),
+            font=(FONT_FAMILY, 18),
             command=self.controller.selectImgs,
         )
 
