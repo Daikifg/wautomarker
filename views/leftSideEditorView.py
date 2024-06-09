@@ -19,7 +19,7 @@ class LeftSideEditorView(ctk.CTkScrollableFrame):
                     )
                 ),
             )
-            for img in self.controller.model.imgsAndWatermark
+            for _, img in self.controller.model.imgsAndWatermark.items()
         ]
 
         self.imgsListButtons = []

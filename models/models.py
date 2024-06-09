@@ -5,7 +5,7 @@ class MainModel:
     def __init__(self):
         self.imgsPath = []
         self.watermarkPath = str
-        self.imgsAndWatermark = []
+        self.imgsAndWatermark = {}
 
     def set_imgs(self, path):
         self.imgsPath.append(path)
@@ -16,7 +16,8 @@ class MainModel:
 
 # IAW: Image And Watermark
 class IAWModel:
-    def __init__(self, img, watermark):
+    def __init__(self, img, watermark, id):
+        self.id = id
         self.img = img
         self.watermark = watermark
         self.watermark_position = (0, 0)

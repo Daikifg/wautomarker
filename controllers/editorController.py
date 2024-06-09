@@ -20,9 +20,11 @@ class EditorController:
 
         self.model = model
 
-        for img in self.model.imgsPath:
-            self.model.imgsAndWatermark.append(
-                IAWModel(Image.open(img), Image.open(self.model.watermarkPath))
+        for x in range(0, len(self.model.imgsPath)):
+            self.model.imgsAndWatermark[x] = IAWModel(
+                Image.open(self.model.imgsPath[x]).convert("RGBA"),
+                Image.open(self.model.watermarkPath),
+                id=x,
             )
 
         self.editorView = EditorView(master=root, controller=self)
@@ -42,6 +44,7 @@ class EditorController:
 
     def displayWithWatermark(self, iawObj):
         """Return a Image Opened object"""
+        # TODO  ADD CHANNEL ALPHA FOR OPACITY OPTION
         resizedWatermark = self.scaleWatermark(iawObj)
         iawObj.img.paste(resizedWatermark, iawObj.watermark_position)
         return iawObj.img
@@ -64,3 +67,6 @@ class EditorController:
         scaledWatermark = watermark.resize(newWatermarkSize)
 
         return scaledWatermark
+
+    def setOpacity(self, value):
+        pass
