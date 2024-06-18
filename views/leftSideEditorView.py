@@ -44,3 +44,4 @@ class LeftSideEditorView(ctk.CTkScrollableFrame):
 
 
 # TODO  Crop img overflow for make 250x100 miniatures
+# TODO  update miniature with the watermark

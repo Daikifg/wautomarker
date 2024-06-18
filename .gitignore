@@ -3,7 +3,8 @@
 *.drawio
 *.png
 *.jpg
-
+prueba.py
+idea.txt
 
 # Ignorar configuraciones locales
 *.ini

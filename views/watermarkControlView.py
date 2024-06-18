@@ -45,7 +45,13 @@ class WatermarkControlView(ctk.CTkFrame):
             anchor="w",
             font=LABEL_FONT,
         )
-        self.opacityHandler = ctk.CTkSlider(self.opacityFrame, number_of_steps=10)
+        self.opacityHandler = ctk.CTkSlider(
+            self.opacityFrame,
+            number_of_steps=10,
+            from_=0.0,
+            to=1.0,
+            command=self.controller.setOpacity,
+        )
         self.opacityEntry = ctk.CTkEntry(
             self.opacityFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
         )

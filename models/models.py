@@ -21,8 +21,8 @@ class IAWModel:
         self.img = img
         self.watermark = watermark
         self.watermark_position = (0, 0)
-        self.watermark_opacity = 1
-        self.watermark_size = (100, 100)
+        self.watermark_opacity = 1.0
+        self.watermark_size = (150, 150)
 
     def set_position(self, coordinates):
         self.watermark_position = coordinates
@@ -32,6 +32,9 @@ class IAWModel:
 
     def set_opacity(self, opacity):
         self.watermark_opacity = opacity
+
+    def update_image(self, image):
+        self.img = image
 
 
 # TODO  IMAGE SHOULD BE PROPORTIONAL
