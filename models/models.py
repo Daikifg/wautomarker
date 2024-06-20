@@ -22,13 +22,13 @@ class IAWModel:
         self.watermark = watermark
         self.watermark_position = (0, 0)
         self.watermark_opacity = 1.0
-        self.watermark_size = (150, 150)
+        self.watermark_size = self.watermark.size
 
     def set_position(self, coordinates):
         self.watermark_position = coordinates
 
     def set_size(self, size):
-        self.watermark_size = size
+        self.watermark_size = (size, calcNewHeightImg(self.watermark.size, size))
 
     def set_opacity(self, opacity):
         self.watermark_opacity = opacity

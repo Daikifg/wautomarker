@@ -73,3 +73,7 @@ class EditorController:
     def setOpacity(self, value):
         self.model.imgsAndWatermark[self.actualIawObj.id].set_opacity(value)
         self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])
+
+    def setSize(self, value):
+        self.model.imgsAndWatermark[self.actualIawObj.id].set_size(value * 10)
+        self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])

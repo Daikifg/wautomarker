@@ -27,7 +27,13 @@ class WatermarkControlView(ctk.CTkFrame):
             anchor="w",
             font=LABEL_FONT,
         )
-        self.sizeHandler = ctk.CTkSlider(self.sizeFrame)
+        self.sizeHandler = ctk.CTkSlider(
+            self.sizeFrame,
+            number_of_steps=100,
+            from_=1,
+            to=100,
+            command=self.controller.setSize,
+        )
         self.sizeEntry = ctk.CTkEntry(
             self.sizeFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
         )
