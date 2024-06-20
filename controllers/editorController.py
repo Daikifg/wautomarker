@@ -46,7 +46,8 @@ class EditorController:
         transparent_layer = Image.new("RGBA", iawObj.img.size, (0, 0, 0, 0))
         resizedWatermark = self.scaleWatermark(iawObj)
         resizedWatermark.putalpha(int(iawObj.watermark_opacity * 255))
-        transparent_layer.paste(resizedWatermark, iawObj.watermark_position)
+        position = (iawObj.watermark_position["x"], iawObj.watermark_position["y"])
+        transparent_layer.paste(resizedWatermark, position)
         imgWithWatermark = iawObj.img.copy()
         imgWithWatermark.alpha_composite(im=transparent_layer, dest=(0, 0))
         return imgWithWatermark
@@ -76,4 +77,14 @@ class EditorController:
 
     def setSize(self, value):
         self.model.imgsAndWatermark[self.actualIawObj.id].set_size(value * 10)
+        self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])
+
+    def setPositionX(self, value, position="x"):
+        self.model.imgsAndWatermark[self.actualIawObj.id].set_position(
+            (value * self.actualIawObj.watermark_size[0]), position
+        )
+        self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])
+
+    def setPositionY(self, value, position="y"):
+        self.model.imgsAndWatermark[self.actualIawObj.id].set_position(value, position)
         self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])

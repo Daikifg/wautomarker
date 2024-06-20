@@ -75,7 +75,13 @@ class WatermarkControlView(ctk.CTkFrame):
             anchor="w",
             font=LABEL_FONT,
         )
-        self.positionXHandler = ctk.CTkSlider(self.positionFrame)
+        self.positionXHandler = ctk.CTkSlider(
+            self.positionFrame,
+            number_of_steps=100,
+            from_=0,
+            to=100,
+            command=self.controller.setPositionX,
+        )
         self.positionXEntry = ctk.CTkEntry(
             self.positionFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
         )
@@ -91,7 +97,13 @@ class WatermarkControlView(ctk.CTkFrame):
             anchor="w",
             font=LABEL_FONT,
         )
-        self.positionYHandler = ctk.CTkSlider(self.positionFrame)
+        self.positionYHandler = ctk.CTkSlider(
+            self.positionFrame,
+            number_of_steps=100,
+            from_=0,
+            to=100,
+            command=self.controller.setPositionY,
+        )
         self.positionYEntry = ctk.CTkEntry(
             self.positionFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
         )
