@@ -45,7 +45,7 @@ class EditorController:
         """Return a Image Opened object"""
         transparent_layer = Image.new("RGBA", iawObj.img.size, (0, 0, 0, 0))
         resizedWatermark = self.scaleWatermark(iawObj)
-        resizedWatermark.putalpha(int(iawObj.watermark_opacity * 255))
+        resizedWatermark.putalpha(int((iawObj.watermark_opacity * 255) / 100))
         position = (iawObj.watermark_position["x"], iawObj.watermark_position["y"])
         transparent_layer.paste(resizedWatermark, position)
         imgWithWatermark = iawObj.img.copy()
@@ -80,11 +80,22 @@ class EditorController:
         self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])
 
     def setPositionX(self, value, position="x"):
-        self.model.imgsAndWatermark[self.actualIawObj.id].set_position(
-            (value * self.actualIawObj.watermark_size[0]), position
-        )
+        xValue = (
+            (value * self.actualIawObj.img.size[0]) / 100
+        ) - self.actualIawObj.watermark_size[0] / 2
+        self.model.imgsAndWatermark[self.actualIawObj.id].set_position(xValue, position)
         self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])
 
     def setPositionY(self, value, position="y"):
-        self.model.imgsAndWatermark[self.actualIawObj.id].set_position(value, position)
+        yValue = (
+            (value * self.actualIawObj.img.size[1]) / 100
+        ) - self.actualIawObj.watermark_size[1] / 2
+        self.model.imgsAndWatermark[self.actualIawObj.id].set_position(yValue, position)
         self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])
+
+
+# TODO  Fix over position
+# TODO  Set img presets
+# TODO  get parameters after change img
+# TODO  Check for watermark sets for alls imgs
+# TODO  Save all images

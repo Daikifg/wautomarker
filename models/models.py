@@ -20,8 +20,8 @@ class IAWModel:
         self.id = id
         self.img = img
         self.watermark = watermark
-        self.watermark_position = {"x": 0, "y": 0}
-        self.watermark_opacity = 1.0
+        self.watermark_position = {"x": 10, "y": 10}
+        self.watermark_opacity = 100
         self.watermark_size = self.watermark.size
 
     def set_position(self, value, position):

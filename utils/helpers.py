@@ -17,3 +17,20 @@ def resizeToSquareImg(aspectRatio, containerSize):
         newWidth = containerSize * aspectRatio
         newHeight = containerSize
         return (newWidth, newHeight)
+
+
+def updateSliderPosition(function, value, slider):
+    function(value)
+    slider.set(value)
+
+
+def updateEntryValue(function, value, entry):
+    function(value)
+    entry.delete(0, 7)
+    entry.insert(index=0, string=str(value))
+
+
+# def updateHandler(fuction, value, handler):
+#     fuction(value)
+#     if handler.winfo_class() == "Slider":
+#     pass

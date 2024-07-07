@@ -1,6 +1,7 @@
 import customtkinter as ctk
 
 from utils.config import FG_COLOR, FONT_FAMILY
+from utils.helpers import updateEntryValue, updateSliderPosition
 
 WIDTH_LABEL = 80
 LABEL_FONT = (FONT_FAMILY, 16)
@@ -32,10 +33,21 @@ class WatermarkControlView(ctk.CTkFrame):
             number_of_steps=100,
             from_=1,
             to=100,
-            command=self.controller.setSize,
+            command=lambda value: updateEntryValue(
+                self.controller.setSize, value, self.sizeEntry
+            ),
         )
         self.sizeEntry = ctk.CTkEntry(
             self.sizeFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
+        )
+
+        self.sizeEntry.bind(
+            "<Return>",
+            lambda event: updateSliderPosition(
+                self.controller.setSize,
+                float(self.sizeEntry.get()),
+                self.sizeHandler,
+            ),
         )
 
         self.sizeLabel.grid(column=0, row=0, pady=PADY_WIDGETS)
@@ -46,20 +58,30 @@ class WatermarkControlView(ctk.CTkFrame):
         self.opacityFrame = ctk.CTkFrame(self, corner_radius=15)
         self.opacityLabel = ctk.CTkLabel(
             self.opacityFrame,
-            text="Opacity:",
+            text="Opacity(%):",
             width=WIDTH_LABEL,
             anchor="w",
             font=LABEL_FONT,
         )
         self.opacityHandler = ctk.CTkSlider(
             self.opacityFrame,
-            number_of_steps=10,
-            from_=0.0,
-            to=1.0,
-            command=self.controller.setOpacity,
+            number_of_steps=100,
+            from_=0,
+            to=100,
+            command=lambda value: updateEntryValue(
+                self.controller.setOpacity, value, self.opacityEntry
+            ),
         )
         self.opacityEntry = ctk.CTkEntry(
             self.opacityFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
+        )
+        self.opacityEntry.bind(
+            "<Return>",
+            lambda event: updateSliderPosition(
+                self.controller.setOpacity,
+                float(self.opacityEntry.get()),
+                self.opacityHandler,
+            ),
         )
 
         self.opacityLabel.grid(column=0, row=0, pady=PADY_WIDGETS)
@@ -80,10 +102,21 @@ class WatermarkControlView(ctk.CTkFrame):
             number_of_steps=100,
             from_=0,
             to=100,
-            command=self.controller.setPositionX,
+            command=lambda value: updateEntryValue(
+                self.controller.setPositionX, value, self.positionXEntry
+            ),
         )
         self.positionXEntry = ctk.CTkEntry(
             self.positionFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
+        )
+
+        self.positionXEntry.bind(
+            "<Return>",
+            lambda event: updateSliderPosition(
+                self.controller.setPositionX,
+                float(self.positionXEntry.get()),
+                self.positionXHandler,
+            ),
         )
 
         self.positionXLabel.grid(column=0, row=0, pady=PADY_WIDGETS)
@@ -102,10 +135,22 @@ class WatermarkControlView(ctk.CTkFrame):
             number_of_steps=100,
             from_=0,
             to=100,
-            command=self.controller.setPositionY,
+            command=lambda value: updateEntryValue(
+                self.controller.setPositionY, value, self.positionYEntry
+            ),
         )
+
         self.positionYEntry = ctk.CTkEntry(
             self.positionFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
+        )
+
+        self.positionYEntry.bind(
+            "<Return>",
+            lambda event: updateSliderPosition(
+                self.controller.setPositionX,
+                float(self.positionXEntry.get()),
+                self.positionXHandler,
+            ),
         )
 
         self.positionYLabel.grid(column=0, row=2, pady=PADY_WIDGETS)
