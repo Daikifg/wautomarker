@@ -33,7 +33,7 @@ class EditorController:
 
     def displaySelectedImg(self, iawObj):
         self.actualIawObj = iawObj
-        openImg = self.displayWithWatermark(iawObj)
+        openImg = self.addWatermark(iawObj)
         aspectRatio = calcAspectRatioImg(openImg.size)
         ctkImage = ctk.CTkImage(
             openImg, size=(resizeToSquareImg(aspectRatio, BIG_IMG_CONTAINER_SIZE))
@@ -41,7 +41,7 @@ class EditorController:
         self.editorView.mainImg.configure(image=ctkImage)
         self.editorView.mainImg.grid(column=1, row=0)
 
-    def displayWithWatermark(self, iawObj):
+    def addWatermark(self, iawObj):
         """Return a Image Opened object"""
         transparent_layer = Image.new("RGBA", iawObj.img.size, (0, 0, 0, 0))
         resizedWatermark = self.scaleWatermark(iawObj)
@@ -93,9 +93,12 @@ class EditorController:
         self.model.imgsAndWatermark[self.actualIawObj.id].set_position(yValue, position)
         self.displaySelectedImg(self.model.imgsAndWatermark[self.actualIawObj.id])
 
+    def saveImgs(self):
+        path_to_save = "../pruebita"
+        for _, value in self.model.imgsAndWatermark.items():
+            self.addWatermark(value).save(f"{path_to_save}{value.id}.png")
+            print("img save in", path_to_save)
 
-# TODO  Fix over position
-# TODO  Set img presets
-# TODO  get parameters after change img
+
 # TODO  Check for watermark sets for alls imgs
 # TODO  Save all images

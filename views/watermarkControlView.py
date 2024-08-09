@@ -43,7 +43,7 @@ class WatermarkControlView(ctk.CTkFrame):
 
         self.sizeEntry.bind(
             "<Return>",
-            lambda event: updateSliderPosition(
+            lambda _: updateSliderPosition(
                 self.controller.setSize,
                 float(self.sizeEntry.get()),
                 self.sizeHandler,
@@ -77,7 +77,7 @@ class WatermarkControlView(ctk.CTkFrame):
         )
         self.opacityEntry.bind(
             "<Return>",
-            lambda event: updateSliderPosition(
+            lambda _: updateSliderPosition(
                 self.controller.setOpacity,
                 float(self.opacityEntry.get()),
                 self.opacityHandler,
@@ -112,7 +112,7 @@ class WatermarkControlView(ctk.CTkFrame):
 
         self.positionXEntry.bind(
             "<Return>",
-            lambda event: updateSliderPosition(
+            lambda _: updateSliderPosition(
                 self.controller.setPositionX,
                 float(self.positionXEntry.get()),
                 self.positionXHandler,
@@ -146,10 +146,10 @@ class WatermarkControlView(ctk.CTkFrame):
 
         self.positionYEntry.bind(
             "<Return>",
-            lambda event: updateSliderPosition(
-                self.controller.setPositionX,
-                float(self.positionXEntry.get()),
-                self.positionXHandler,
+            lambda _: updateSliderPosition(
+                self.controller.setPositionY,
+                float(self.positionYEntry.get()),
+                self.positionYHandler,
             ),
         )
 
@@ -158,7 +158,9 @@ class WatermarkControlView(ctk.CTkFrame):
         self.positionYHandler.grid(column=0, row=3, columnspan=2, pady=PADY_WIDGETS)
 
         # Save btn:
-        self.saveAllBtn = ctk.CTkButton(self, text="Save all")
+        self.saveAllBtn = ctk.CTkButton(
+            self, text="Save all", command=self.controller.saveImgs
+        )
 
         # display:
         self.sizeFrame.grid(column=0, row=0, pady=PADY_MODULES, padx=PADX_MODULES)

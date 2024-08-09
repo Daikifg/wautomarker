@@ -17,7 +17,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-# TODO  Create select watermark view
-# TODO  Create watermark model
