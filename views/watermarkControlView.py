@@ -42,10 +42,10 @@ class WatermarkControlView(ctk.CTkFrame):
         )
 
         self.sizeEntry.bind(
-            "<Return>",
+            "<KeyRelease>",
             lambda _: updateSliderPosition(
                 self.controller.setSize,
-                float(self.sizeEntry.get()),
+                self.sizeEntry.get(),
                 self.sizeHandler,
             ),
         )
@@ -76,17 +76,19 @@ class WatermarkControlView(ctk.CTkFrame):
             self.opacityFrame, width=WIDTH_LABEL - 30, font=LABEL_FONT
         )
         self.opacityEntry.bind(
-            "<Return>",
+            "<KeyRelease>",
             lambda _: updateSliderPosition(
                 self.controller.setOpacity,
-                float(self.opacityEntry.get()),
+                self.opacityEntry.get(),
                 self.opacityHandler,
             ),
         )
 
         self.opacityLabel.grid(column=0, row=0, pady=PADY_WIDGETS)
         self.opacityEntry.grid(column=1, row=0, padx=10)
-        self.opacityHandler.grid(column=0, row=1, columnspan=2, pady=PADY_WIDGETS)
+        self.opacityHandler.grid(
+            column=0, row=1, columnspan=2, pady=PADY_WIDGETS
+        )
 
         # Position Handler
         self.positionFrame = ctk.CTkFrame(self, corner_radius=15)
@@ -111,17 +113,19 @@ class WatermarkControlView(ctk.CTkFrame):
         )
 
         self.positionXEntry.bind(
-            "<Return>",
+            "<KeyRelease>",
             lambda _: updateSliderPosition(
                 self.controller.setPositionX,
-                float(self.positionXEntry.get()),
+                self.positionXEntry.get(),
                 self.positionXHandler,
             ),
         )
 
         self.positionXLabel.grid(column=0, row=0, pady=PADY_WIDGETS)
         self.positionXEntry.grid(column=1, row=0, padx=10)
-        self.positionXHandler.grid(column=0, row=1, columnspan=2, pady=PADY_WIDGETS)
+        self.positionXHandler.grid(
+            column=0, row=1, columnspan=2, pady=PADY_WIDGETS
+        )
 
         self.positionYLabel = ctk.CTkLabel(
             self.positionFrame,
@@ -145,26 +149,34 @@ class WatermarkControlView(ctk.CTkFrame):
         )
 
         self.positionYEntry.bind(
-            "<Return>",
+            "<KeyRelease>",
             lambda _: updateSliderPosition(
                 self.controller.setPositionY,
-                float(self.positionYEntry.get()),
+                self.positionYEntry.get(),
                 self.positionYHandler,
             ),
         )
 
         self.positionYLabel.grid(column=0, row=2, pady=PADY_WIDGETS)
         self.positionYEntry.grid(column=1, row=2, padx=10)
-        self.positionYHandler.grid(column=0, row=3, columnspan=2, pady=PADY_WIDGETS)
+        self.positionYHandler.grid(
+            column=0, row=3, columnspan=2, pady=PADY_WIDGETS
+        )
 
         # Save btn:
         self.saveAllBtn = ctk.CTkButton(
-            self, text="Save all", command=self.controller.saveImgs
+            self, text="Save all", command=self.controller.openSaveDialog
         )
 
         # display:
-        self.sizeFrame.grid(column=0, row=0, pady=PADY_MODULES, padx=PADX_MODULES)
-        self.opacityFrame.grid(column=0, row=1, pady=PADY_MODULES, padx=PADX_MODULES)
-        self.positionFrame.grid(column=0, row=2, pady=PADY_MODULES, padx=PADX_MODULES)
+        self.sizeFrame.grid(
+            column=0, row=0, pady=PADY_MODULES, padx=PADX_MODULES
+        )
+        self.opacityFrame.grid(
+            column=0, row=1, pady=PADY_MODULES, padx=PADX_MODULES
+        )
+        self.positionFrame.grid(
+            column=0, row=2, pady=PADY_MODULES, padx=PADX_MODULES
+        )
 
         self.saveAllBtn.grid(column=0, row=3)

@@ -6,12 +6,20 @@ class MainModel:
         self.imgsPath = []
         self.watermarkPath = str
         self.imgsAndWatermark = {}
+        self.savePath = str
+        self.saveName = str
 
     def set_imgs(self, path):
         self.imgsPath.append(path)
 
     def set_watermark(self, path):
         self.watermarkPath = path
+
+    def set_savePath(self, path):
+        self.savePath = path
+
+    def set_saveName(self, name):
+        self.saveName = name
 
 
 # IAW: Image And Watermark

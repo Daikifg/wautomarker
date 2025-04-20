@@ -20,6 +20,9 @@ def resizeToSquareImg(aspectRatio, containerSize):
 
 
 def updateSliderPosition(function, value, slider):
+    if not value:
+        return
+    value =  float(value)
     function(value)
     slider.set(value)
 

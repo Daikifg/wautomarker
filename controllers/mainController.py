@@ -10,9 +10,8 @@ class MainController:
     def __init__(self, root):
         self.root = root
         self.model = MainModel()
-        self.mainView = MainView(master=root, controller=self)
+        self.mainView = MainView(self.root, controller=self)
         self.watermarkView = WatermarkView(master=root, controller=self)
-        self.watermarkView.pack_forget()
 
     def selectImgs(self):
         imgs_paths = filedialog.askopenfilenames()

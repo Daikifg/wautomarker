@@ -1,7 +1,6 @@
 import customtkinter as ctk
 
 from utils.config import FG_COLOR, HEIGHT_PANEL, WIDTH_PANEL
-from utils.helpers import calcAspectRatioImg, resizeToSquareImg
 from views.leftSideEditorView import LeftSideEditorView
 from views.watermarkControlView import WatermarkControlView
 
